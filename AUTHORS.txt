@@ -1,4 +1,4 @@
-In no particular order:
+# Authors, in no particular order:
   Al Ghous
   Joel Fulton
   Oren Yunger
