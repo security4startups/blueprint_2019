@@ -10,4 +10,5 @@
   David Tsao
   Max Rousseau
   Mike Murray
+  Vijay Bolina
   Ody Lupescu
