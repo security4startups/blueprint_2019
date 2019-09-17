@@ -1,12 +1,14 @@
 # Authors, in no particular order:
   Al Ghous
   Joel Fulton
+  Amber Miller
   Oren Yunger
   Harshil Parikh
   Ralph Pyne
   Omer Singer
   Anshu Gupta
   Talha Tariq
+  Maria Cassar
   David Tsao
   Mike Murray
   Ody Lupescu
