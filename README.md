@@ -1,6 +1,6 @@
 ![S4S](https://github.com/security4startups/blueprint_website/blob/master/s4s_logo.png)
 
-## Security Blueprint 4 Startups
+## Security 4 Startups
 
 ## About this guide
 
