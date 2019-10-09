@@ -1,0 +1,242 @@
+[{
+        "title": "General Design Principles for Secure Software Development",
+        "controls": [{
+                "title": "Minimize the number of high-consequence targets",
+                "list": [{
+                    "title": "Principle of least privilege",
+                    "content": "Minimizes the number of actors in the system that are granted high levels of privilege and the amount of time any actor can hold onto its privileges."
+                }, {
+                    "title": "Separation of privileges, duties, and roles",
+                    "content": "Ensures that no single entity (human or software) should have all the privileges required to modify, delete, or destroy the system, components and resources."
+                }, {
+                    "title": "Separation of domains",
+                    "content": "Separation of domains makes separation of roles and privileges easier to implement."
+                }]
+            },
+            {
+                "title": "Don’t expose vulnerable or highconsequence components",
+                "list": [{
+                    "title": "Keep program data, executables, and configuration data separated",
+                    "content": "Reduces the likelihood that an attacker who gains access to program data will easily locate and gain access to program executables or control/ configuration data."
+                }, {
+                    "title": "Segregate trusted entities from untrusted entities",
+                    "content": "Reduces the exposure of the software’s highconsequence functions from its high-risk functions, which can be susceptible to attacks."
+                }, {
+                    "title": "Minimize the number of entry and exit points",
+                    "content": "Reduces the attack surface."
+                }, {
+                    "title": "Assume environment data is not trustworthy",
+                    "content": "Reduces the exposure of the software to potentially malicious execution environment components or attacker-intercepted and modified environment data."
+                }, {
+                    "title": "Use only trusted interfaces to environment resources",
+                    "content": "This practice reduces the exposure of the data passed between the software and its environment."
+                }]
+            },
+            {
+                "title": "Deny attackers the means to compromise",
+                "list": [{
+                    "title": "Simplify the design",
+                    "content": "This practice minimizes the number of attacker exploitable vulnerabilities and weaknesses in the system."
+                }, {
+                    "title": "Hold all actors accountable",
+                    "content": "This practice ensures that all attacker actions are observed and recorded, contributing to the ability to recognize and isolate/block the source of attack patterns."
+                }, {
+                    "title": "Timing, synchronization, and sequencing should be simplified to avoid issues",
+                    "content": "Modeling and documenting timing, synchronization, and sequencing issues will reduce the likelihood of race conditions, order dependencies, synchronization problems, and deadlocks."
+                }, {
+                    "title": "Make secure states easy to enter and vulnerable states difficult to enter",
+                    "content": "This practice reduces the likelihood that the software will be allowed to inadvertently enter a vulnerable state."
+                }, {
+                    "title": "Design for controllability",
+                    "content": "This practice makes it easier to detect attack paths, and disengage the software from its interactions with attackers. Caution should be taken when using this approach since it can open up a whole range of new attack vectors."
+                }, {
+                    "title": "Design for secure failure",
+                    "content": "Reduces the likelihood that a failure in the software will leave it vulnerable to attack."
+                }]
+            }
+        ]
+    },
+
+    {
+        "title": "Securing Web Application",
+        "controls": [{
+            "title": "Authentication",
+            "detail": [
+                "Ensure all internal and external connections (user and entity) go through an appropriate and adequate form of authentication.",
+                "Ensure all pages enforce the requirement for authentication.",
+                "Pass authentication credentials or sensitive information only via HTTP “POST” method, do not accept HTTP “GET” method.",
+                "Ensure authentication credentials do no traverse “the wire” in clear text form."
+            ]
+        }, {
+            "title": "Authorization",
+            "detail": [
+                "Ensure application has clearly defined the user types and the rights of said users.",
+                "Grant only those authorities necessary to perform a given role.",
+                "Ensure the authorization mechanisms work properly, fail securely, and cannot be circumvented.",
+                "Do not expose privileged accounts and operations externally."
+            ]
+        }, {
+            "title": "Cookie Management",
+            "detail": [
+                "Ensure that unauthorized activities cannot take place via cookie manipulation.",
+                "Encrypt the entire cookie if it contains sensitive data.",
+                "Ensure secure flag is set to prevent accidental transmission over “the wire” in a non-secure manner. The secure flag dictates that the cookie should only be sent over secure means, such as Secure Sockets Layer (SSL).",
+                "Do not store private information on cookies. If required, only store what is necessary."
+            ]
+        }, {
+            "title": "Data/Input Validation",
+            "detail": [
+                "Do not expose privileged accounts and operations externally."
+            ]
+        }, {
+            "title": "Error Handling/ Information Leakage",
+            "detail": [
+                "Ensure the application fails in a secure manner.",
+                "Ensure resources are released if an error occurs.",
+                "Do not expose system errors to the user."
+            ]
+        }, {
+            "title": "Logging/ Auditing",
+            "detail": [
+                "Setup robust logging and feed SEIM or similar tools to facilitate monitoring"
+            ]
+        }, {
+            "title": "Cryptography",
+            "detail": [
+                "Ensure the application is implementing known good cryptographic methods.",
+                "Do not transmit sensitive data in the clear, internally or externally.",
+                "Do not develop custom cryptography."
+            ]
+        }]
+    }, {
+        "title": "Session Management",
+        "controls": [{
+            "title": "Attacker guessing the user’s Session ID for secure failure",
+            "detail": [
+                "Session IDs should be created with the same standards as passwords. This means that the Session ID should be of considerable length and complexity. There should not be any noticeable pattern in the Session IDs that could be used to predict the next ID to be issued."
+            ]
+        }, {
+            "title": "Attacker stealing the user’s Session ID",
+            "detail": [
+                "Session IDs, like all sensitive data, should be transmitted by secure means (such as HTTPS) and stored in a secure location (not publicly readable)."
+            ]
+        }, {
+            "title": "Attacker setting a user’s Session ID (session fixation)",
+            "detail": [
+                "The application should check that all Session IDs being used were originally distributed by the application server."
+            ]
+        }]
+    }, {
+        "title": "Transport Layer Protection",
+        "controls": [{
+            "title": "TLS",
+            "detail": [
+                "Require TLS for all sensitive pages. Non-TLS requests to these pages should be redirected to the TLS page.",
+                "Configure your TLS provider to only support strong (for example, FIPS 140-2 compliant) algorithms.",
+                "Backend and other connections should also use TLS or other encryption technologies."
+            ]
+        }, {
+            "title": "Cookies",
+            "detail": [
+                "Set the ‘secure’ flag on all sensitive cookies. This will prevent the browser from sending any cookie with the ‘secure’ flag enabled to any ‘HTTP’ connections."
+            ]
+        }, {
+            "title": "Certificates",
+            "detail": [
+                "Ensure your certificate is valid, not expired, not revoked, and matches all domain used by the site."
+            ]
+        }]
+    }, {
+        "title": "Securing Password",
+        "controls": [{
+            "title": "Password Complexity",
+            "detail": [
+                "Enforce password complexity requirements established by policy or regulations. Authentication credentials should be sufficient to withstand attacks that are typical of the threats in the deployed environment. An example of password complexity is requiring alphabetic as well as numeric and/or special characters in the password."
+            ]
+        }, {
+            "title": "Password Minimum Length",
+            "detail": [
+                "Enforce a minimum length requirement for the password, as established by policy or regulations. OWASP recommends at least eight characters, but sixteen characters or the use of multi-word pass phrases will provide a better solution."
+            ]
+        }, {
+            "title": "Password Change",
+            "detail": [
+                "Enforce password changes based on requirements established in policy or regulations. Critical systems may require more frequent password changes."
+            ]
+        }, {
+            "title": "Password Reuse",
+            "detail": [
+                "Prevent password re-use; passwords should be at least one day old before they can be changed."
+            ]
+        }, {
+            "title": "Failed Login",
+            "detail": [
+                "Disable the account after a certain number of failed login attempts."
+            ]
+        }, {
+            "title": "Error Messages",
+            "detail": [
+                "Display generic error messages when a user types in an incorrect username or password."
+            ]
+        }, {
+            "title": "Password Storage",
+            "detail": [
+                "Store passwords in the database as salted hash values."
+            ]
+        }]
+    }, {
+        "title": "Mobile Application Security",
+        "controls": [{
+            "title": "Insecure Data Storage",
+            "detail": [
+                "Store only what is absolutely required; never use public storage areas (e.g. SD cards); leverage secure containers and platform provided file encryption APIs; and do not grant files world readable or world writeable permissions."
+            ]
+        }, {
+            "title": "Weak Server Side Controls",
+            "detail": [
+                "Understand the additional risks mobile applications can introduce into existing architectures and use the wealth of knowledge already out there (for example, OWASP Web Top 10, Cloud Top 10, Cheat Sheets, Development Guides)."
+            ]
+        }, {
+            "title": "Insufficient Transport Layer Protection",
+            "detail": [
+                "Ensure all sensitive data leaving the device is encrypted; this includes data over carrier networks, Wi-Fi, etc."
+            ]
+        }, {
+            "title": "Client Side Injection",
+            "detail": [
+                "Sanitize or escape untrusted data before rendering or executing it; use prepared statements for database calls (concatenation is a bad practice); and minimize the sensitive native capabilities tied to hybrid web functionality."
+            ]
+        }, {
+            "title": "Poor Authorization and Authentication",
+            "detail": [
+                "Contextual information can enhance the authentication process but only as a part of a multi- factor authentication; never use device ID or subscriber ID as a sole authenticator; and authenticate all API calls to paid resources."
+            ]
+        }, {
+            "title": "Improper Session Handling",
+            "detail": [
+                "Do not use device identifier as a session token. Make users re-authenticate every so often and ensure that tokens can be revoked quickly in the event of a stolen/lost device."
+            ]
+        }, {
+            "title": "Security Decisions via Untrusted Inputs",
+            "detail": [
+                "Check caller’s permissions at input boundaries; prompt the user for additional authorization before allowing consummation of paid resources; when permission checks cannot be performed, ensure additional steps are required to launch sensitive actions."
+            ]
+        }, {
+            "title": "Side Channel Data Leakage",
+            "detail": [
+                "Understand what third-party libraries in your application are doing with the user data; never log credentials, PII, or other sensitive data to system logs; remove sensitive data before screenshots are taken; before releasing apps, debug them to observe files created, written to, or modified in any way; and test your application across as many platform versions as possible."
+            ]
+        }, {
+            "title": "Broken Cryptography",
+            "detail": [
+                "Encoding, obfuscation, and serialization is not considered encryption.",
+                "Preventions Tips: Do not store the key with the encrypted data; use what your platform already provides; and do not develop in-house cryptography."
+            ]
+        }, {
+            "title": "Sensitive Information Disclosure",
+            "detail": [
+                "Do not store the private API keys in the client; keep proprietary and sensitive business logic on the server; and never hardcode the password"
+            ]
+        }]
+    }
+]

@@ -1,0 +1,7 @@
+Learn the security best practices for the languages you use 
+Use well vetted security components, don't build your own if possible
+Conduct risk assessments and create threat models as appropriate
+Have your code reviewed for security issues
+Keep production data in production only
+Encrypt sensitive data
+Log security events

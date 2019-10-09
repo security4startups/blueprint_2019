@@ -1,0 +1,106 @@
+[
+    {
+        "questions": "Do you plan to sell your product to business customers (B2B)?",
+        "undefined": "Selling to businesses (small, medium and large companies) entails different security requirements than selling to consumers; such differences can be significant, especially when trying to provide a SaaS service/product. Although security and compliance could eventually converge in later stages for many organizations, regardless of their customer base, in many cases the differences are massive during the early stages of the company. As such, the security and compliance concerns and approach(es) will vary based on the customer base."
+    },
+    {
+        "answers": "if yes -",
+        "undefined": "Business customers generally demand significantly more security, privacy, and compliance controls than consumers. Such requirements might originate from:"
+    },
+    {
+        "undefined": "A security team's concerns with data security, resilience/operational continuity, contractual requirements, etc."
+    },
+    {
+        "undefined": "A compliance team's need to satisfy regulatory compliance (e.g., FFIEC, GLBA) or other regulations mandating vendor due diligence."
+    },
+    {
+        "undefined": "A legal or privacy team's need to satisfy regulatory compliance (e.g., GDPR, HIPAA)"
+    },
+    {
+        "questions": " ",
+        "followupQuestions": "Will you have access to customer information (their customer information, employees, contractors), IP (code, patents), or any other sensitive information?",
+        "whyDoesItMatter": "Data Breach",
+        "undefined": "If yes, you will likely be held accountable to the same set of requirements as the organization set for itself; these requirements might include regulatory and/or industry requirements. Consider the entire process of acquiring/storing/accessing this information. Such processes, and associated systems and applications, will likely be in scope for your customer's audit. Depending on the number of records your company will have access to, and the type of information contained in these records, your organization might be considered high risk by your customer - and be subject to a higher security standard. There might be a significant reluctance to host such data, especially data in scope for regulatory requirements (e.g., customer private information), in startup's cloud environments (SaaS). Hence an on-prem option should be evaluated if, in addition to accessing the information, there is a need/potential for such information to be stored in your environment."
+    },
+    {
+        "followupQuestions": "if so, will this data be transmitted or stored outside the customer''s controlled environment?",
+        "whyDoesItMatter": "Data Breach",
+        "undefined": "While accessing sensitive data within a control environment introduces a set of threats, in most cases existing controls can be leveraged to mitigate some of these threats. Moving sensitive data outside of a customer's controlled environment is generally considered a high or critical risk, especially in a SaaS situation -where the customer has no control over the safeguards in the environment. Oftentimes, the risk introduced by sending sensitive data outside of the organization -to a SaaS provider- is considered significantly higher than whatever risk is being mitigated or opportunity created by the SaaS offering. As such, SaaS providers hosting customer sensitive data should prepare for a high degree of scrutiny during the vendor risk assessment process; the level of scrutiny depends on the maturity of the security program in the customer's organization. While an external attestation might suffice in some cases, a vast majority of CISOs will insist on a higher level of scrutiny and will have an expectation of minimum safeguards -that typically startups will have a very difficult time meeting. For SaaS providers in such situations, we advise developing an offering a customer-managed offering (aside from the SaaS offering); such offering could/should be a turn-key solution, such as containers that can run in a customer environment with little or no remote oversight. "
+    },
+    {
+        "followupQuestions": "Will you have remote access to your customer's environment (e.g., access to production infrastructure, product or any remote access activity)?",
+        "whyDoesItMatter": "Integrity, Operation Disruption",
+        "undefined": "Depending on the level of sophistication of your customer remote access solutions, your offering might incur higher scrutiny; organizations with relatively ineffective remote access controls - e.g., VPN solutions that operate on all or nothing model - i.e., once connected all systems behind the VPN are accessible, will likely be more concerned with vendors that have remote access to their environments. Such access introduces a new set of risks - in the event your environment is compromised, such access could provide the attacker an avenue to attack their environment (remember the Target breach? it was the HVAC vendor)... Organizations with mature remote access solutions will be able to better control such access, especially if using a zero trust model, leading to reduced risk and potentially less scrutiny.  "
+    },
+    {
+        "followupQuestions": "Will you hold any credentials for critical systems and/or privileged accounts for your customers systems in your environment (e.g., access to databases, root access to operating systems, etc.)?",
+        "whyDoesItMatter": "Integrity, Data Breach, Operations Disruption",
+        "undefined": "In most cases, such arrangement will be considered to introduce a high or critical amount of risk for a customer; oftentimes, the level of risk will be considered even higher than the risk associated with hosting sensitive data in your environment. Similar to the risks introduced by storing sensitive data or allowing remote access to 3rd parties, privileged access that is controlled by a 3rd party leads to a high degree of scrutiny for the 3d party. Your customers will want to avoid predicaments similar to Target (breach caused by compromised HVAC vendor) and the difficulty of explaining away why the organization decided to trust a startup, with limited security resources, with the \"keys to the kingdom\". Furthermore, such an arrangement will likely increase your threat profile, as attackers aware of such arrangement will likely target your environment, rather than attacking your customers directly.  \n"
+    },
+    {
+        "followupQuestions": "Will you be providing a mission critical service or will your service be integrated to a mission critical part for your customers? (e.g. if your service fails, will your customer be severely impacted by that)?",
+        "whyDoesItMatter": "Integrity, Operations Disruption",
+        "undefined": "If yes, prepare for a high level of scrutiny, particularly in terms of your operational controls, from SDLC to change management and incident/crisis management. Understand that you will/might be in the critical path for a (particular) operational process for your customer. An effort should be made to understand the target customer's SLAs and ensure you build appropriate redundancies in your product/environment to meet this SLA."
+    },
+    {
+        "followupQuestions": "Will you provide services on behalf of your customer to end users? (e.g. mail distribution, landing pages)?",
+        "whyDoesItMatter": "Integrity",
+        "undefined": "A number of regulatory requirements will likely became relevant to your offering (depending on your offering, such regulations could include state, federal, and/or international privacy, etc). Furthermore, a higher degree of concern regarding reputation damage will likely play a role in the amount of due diligence you will subjected to by your customers - a breach of your environment will be highly visible for your customer's customers, likely resulting in some type of undesirable outcome for your relationship with the client."
+    },
+    {
+        "answers": "if no  -"
+    },
+    {
+        "followupQuestions": "Will you store credentials for other services used by your customers?",
+        "whyDoesItMatter": "Data Breach",
+        "undefined": "Many service providers, such as Google, have taken steps to safeguards their customer/user data & credentials. Google, for instance, has recently adopted an approach whereby access to restricted domains - e.g., a customer's/user's credentials for accessing Google Drive, requires a security assessment and certification. Furthermore, storing credentials for other services used by your customers/users will likely make your organization and service a target for an attacker targeting other services used by your customers - e.g., it is likely easier to break into your environment, if you store credentials for Google users, and steal these credentials, rather than attacking Google directly."
+    },
+    {
+        "followupQuestions": "Will you store potentially sensitive customer information (e.g., pictures, documents, PII, etc.)?",
+        "whyDoesItMatter": "Data Breach",
+        "undefined": "Similar to storing credentials for other services in your environment, storing sensitive information will likely have a number of implications; regulatory/privacy implications -e.g., you will potentially have to comply with privacy regulations, scrutiny from services where customer data is pulled from - e.g., Google, and an increase likelihood of attacks - e.g., if customer's photos are stored in your environment, it might be easier for an attacker to obtain them by attacking your service versus attacking Apple."
+    },
+    {
+        "followupQuestions": "Will you install software on your customer systems (including browser extension)? ",
+        "whyDoesItMatter": "Integrity",
+        "undefined": "Vendors with a client software are target of attacks attempting to deploy malware through 3rd parties -such as your client software. Consider implementing integrity checks throughout your build process to ensure no malicious code is added to your product. Furthermore, appropriate safeguards for software signing certificates is mandatory."
+    },
+    {
+        "followupQuestions": "If your services are abused can they result in financial loss to your customers?",
+        "whyDoesItMatter": "Data Breach",
+        "undefined": "Aside from the obvious financial liability, your services will likely be targeted by attackers attempting to commit financial fraud. Such attacks, and the associated likelihood, are often underestimated in the beginning, and in most cases operational losses are incurred as a result. Consider adding a trust and safety function in your organization as soon as practical. "
+    },
+    {
+        "questions": "do you know whether there are regulatory requirements relevant to your product/service?",
+        "undefined": "Understanding regulations you, and/or your clients are/might be subject to is paramount when developing a new product or service. While not all regulations are prescriptive or provide specific control requirements, either people, process, or technology, understanding and taking regulatory requirements into account from the beginning is one of the most consequential choices you will make. Discuss regulations with your prospective clients and consult a legal counsel if unsure about relevant regulations and their requirements."
+    },
+    {
+        "followupQuestions": "b2b"
+    },
+    {
+        "followupQuestions": "will you hold any their customer information in your SaaS environment?",
+        "whyDoesItMatter": "Data Breach"
+    },
+    {
+        "followupQuestions": "will you sell a product/solution or cater to clients that could be considred controversial"
+    },
+    {
+        "followupQuestions": "can you services be abused for financial gain"
+    },
+    {
+        "followupQuestions": "does your service or product require installation of software on customer's systems - either desktop or servers, including any kind of component (e.g JS)",
+        "whyDoesItMatter": "Integrity, Operations Disruption"
+    },
+    {
+        "followupQuestions": "b2c"
+    },
+    {
+        "followupQuestions": "will you provide a product/solution that could be considred controversial or caters to controversial individuals"
+    },
+    {
+        "undefined": "S4S is a recommendation baseline to build the company with security in mind. This is no a standard that companies must abide by. Therefore, any bulletpoint should be evaluated separately by the startup."
+    },
+    {
+        "undefined": "This means - it is a hard for us to determine what is the exact risk level required for a specific recommendation and whether it will be ok to implement something in different stages of the company"
+    }
+]
