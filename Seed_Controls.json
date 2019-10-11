@@ -1,0 +1,264 @@
+[
+  {
+    "safeguardsConsiderations": "Identity and Access Management",
+    "controls": "Prevent unauthorized access to endpoints and mobile devices by enabling a password protected screen lock after inactivity/timeout.",
+    "details": "To prevent unauthorized access to laptops, servers, and mobile devices, companies should protect devices by requiring passwords or passcodes after a reasonable period of inactivity.",
+    "suggestedTools": "AirWatch, JAMF (Mac), Active Directory GPOs, Office365 (E1 plans & higher), GSuite MDM ",
+    "corporate": "x",
+    "productInfrastructure": "x"
+  },
+  {
+    "safeguardsConsiderations": "Identity and Access Management",
+    "controls": "Change default password(s) in any technology solution and/or services before use.",
+    "details": "One of the common ways malicious actors gain unauthorized access is by exploiting default passwords on systems, applications, and services. Such passwords are readily available/known, hence little, if any sophistication is required for a successful attack. \n\nAs such, default passwords should be changed before use. It is recommended to include this step as part of production readiness checklists and deployment processes.",
+    "suggestedTools": "LAPS (Windows), endpoint management/protection solutions (see below), vulnerability scanners (Qualys, Rapid7, Tenable, etc. -- some are free for limited use)",
+    "risks": "All ",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Identity and Access Management",
+    "controls": "Deploy/Use a password manager for all employees; get a business version that allows credential sharing.",
+    "details": "Given the prevalence of password reuse or use of personal passwords on business information systems, it is recommended to deploy a Password Management tool to all employees. \n\nAdditionally, credentials sharing is a necessity in virtually all organizations; business versions of password managers offer group-based credential sharing, comprehensive audit trails, and other features essential for enterprises.\n\nLastly, use a password manager or a vault to store API keys and other machine/non-human credentials from Day 1, see below \"Do not store secrets in code\".",
+    "suggestedTools": "KeyPass, 1Password, Dashlane, BitWarden, LastPass",
+    "risks": "All ",
+    "corporate": "x"
+  },
+  {
+    "safeguardsConsiderations": "Identity and Access Management",
+    "controls": "If a system/service has a multi-factor authentication (MFA) option, turn it on (as a general rule, choose services that support MFA).",
+    "details": "Considering the magnitude of the credentials exposed in on-going data breaches, and the tendency of users to reuse password across different services/sites, there is a good chance static credentials (e.g., passwords) might be obtained by an attacker. A simple way to reduce exposure to such attacks, virtually to zero for all but the most sophisticated attackers/attacks, is to enable MFA and use a Time-Based One Time Password (TOTP); many TOTP solutions are offered as free mobile applications.",
+    "suggestedTools": "Azure MFA, Okta MFA, Yubikey, Google Authenticator",
+    "risks": "All ",
+    "corporate": "x",
+    "productInfrastructure": "x"
+  },
+  {
+    "safeguardsConsiderations": "Identity and Access Management",
+    "controls": "Enable user authentication through federation or 3rd party authentication services whenever technically feasible/practical; If not feasible, use a salted hash for password authentication in internally developed applications.",
+    "details": "For enterprise services and applications, federation of authentication (and authorization) is a security, compliance, and user-experience must-do. Federate authentication whenever possible and consider (hard) whether the premium charged by some vendors for SAML/SSO is worth it. At a minimum, critical services and applications should leverage SSO. \n\nWith regards to internally developed applications, meant for internal use, consider implementing OpenID Connect (OIDC) or SAML for user authentication/authorization. Aside from the security benefits, the compliance and user experience benefits are enormous. Moreover, building various security features in authentication services (such as lockout mechanism, password strength, and MFA) requires specialized developer expertise and significant time commitments which might not be available. \n\nIf developing an application or service for consumers, ensure you build federation capabilities - most tools, particularly enterprise, should support OIDC and/or SAML out of the box.",
+    "suggestedTools": "Okta, OneLogin, Google Auth, OAuth, OpenID Connect.",
+    "risks": "All ",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Infrastructure Security",
+    "controls": "Use VPN/similar solutions to manage remote access to your production environment; avoid administering your production servers from the public Internet (e.g., ssh directly into your production systems from the Internet).",
+    "details": "Allowing direct access from public networks (e.g., Internet) to production server, particularly ssh and other administrative access invites any and all attacks to attempt to access these systems. Any vulnerability associated with the systems will likely be immediately exploited; attackers continuously scan the Internet for such publicly accessible systems and, given the simplicity of exploiting known vulnerabilities, will invariably exploit such systems. \n\nAs it's difficult to maintain systems up to date - even with known exploits/leaving aside Zero Day and other unknown vulnerabilities, it is best not to expose systems to public access, except for applications/service specifically designed for public access/use -e.g., main website. VPNs were the standard solution for managing remote access to corporate systems; new solutions are based on beyondcorp and Zero Trust; nonetheless, either type of solution will suffice in the beginning.",
+    "suggestedTools": "Wireguard VPN, SSH bastion hosts, Pritunl, Duo",
+    "corporate": "x",
+    "productInfrastructure": "x"
+  },
+  {
+    "safeguardsConsiderations": "Identity and Access Management",
+    "controls": "Follow a need-to-know basis permission approach (not everyone should access all systems/not everyone should be an admin); keep the number of admins/privileged users to a minimum.",
+    "details": "All access to data should be role based on a need-to-know basis. Privileged access should be limited to a small set of users to ensure proper control over sensitive data and critical systems. Improperly assigned access becomes a huge technology and security debt, and invariably leads to audit/certification issues/failure (if such audits/certifications are needed), and/or leads to exposure to internal threats, from malicious acts by insiders to accidental/negligent acts resulting in system/services downtime and operational losses.",
+    "risks": "All ",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Identity and Access Management",
+    "controls": "Define on-boarding and off-boarding of users - e.g., what accounts are created or terminated upon hire/termination, what default privileges are assigned for users, etc.",
+    "details": "A checklist-based user access provisioning, access termination and user access review processes are key to making sure that only authorized users have access to company information systems.\n\n",
+    "reference": "Awesome Onboarding 92bondstreet - https://github.com/92bondstreet/awesome-onboarding",
+    "risks": "All ",
+    "corporate": "x",
+    "productInfrastructure": "x"
+  },
+  {
+    "safeguardsConsiderations": "Infrastructure Security",
+    "controls": "Protect your wireless networks, both guest and corporate; at a minimum, set different authentication keys for corporate and guest.",
+    "details": "Wi-Fi access should be secured with separate SSIDs for corporate and guest access. Corporate Wi-Fi access should ideally utilize a certificate based authentication. If a shared key is used for authentication, it should be rotated on a regular basis.",
+    "suggestedTools": "Meraki, Foxpass",
+    "corporate": "x"
+  },
+  {
+    "safeguardsConsiderations": "Identity and Access Management",
+    "controls": "Each individual, including developers & contractors, needs their own accounts (i.e., don't share accounts).",
+    "details": "For attribution purposes (i.e. which user performed which action) and to enforce proper access management and off-boarding procedures it is important that accounts are not shared amongst organizational users.",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Application Security",
+    "controls": "Don’t store secrets in code.",
+    "details": "If secrets are stored in code, they are visible to all the developers working on a code repository. They also get stored in code version history and make the organization vulnerable to unauthorized access, especially if these secrets are not changed when users leave the organization. Many of the secrets provide programmatic access to production environment that allows bad actors to access production environment. Moreover, in case of a breach it becomes extremely hard to attribute the breach to a specific actor.",
+    "suggestedTools": "Credstash, AWS KMS, AWS Secrets Manager, Hashicorp Vault",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Infrastructure Security",
+    "controls": "Encrypt laptop hard disk drive (HDD).",
+    "details": "A lost or stolen laptop with customer (either enterprise or consumer) sensitive information can be catastrophic to a startup, especially startups involved in regulated activities. It will not be easy explaining why the laptop was not encrypted, given that it's one of the most pervasive controls implemented in the private sector. Encrypting the HDD, and ensuring there is a strong password for accounts in the laptop/device virtually eliminiates the risk. Plus, the encryption process is fairly seamless and free/built-in.  ",
+    "suggestedTools": "FileVault for Mac OS, BitLocker for Windows",
+    "corporate": "x"
+  },
+  {
+    "safeguardsConsiderations": "Infrastructure Security",
+    "controls": "Turn on automatic updates for operating systems and applications that support the functionality.",
+    "details": "No software is forever perfect; ensuring that automatic patches are enabled on all end points helps protect against known vulnerabilities, which in turn reduces the likelihood of having a breach - e.g., ransomware, unauthorized access, etc.",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Infrastructure Security",
+    "controls": "Install an endpoint protection solution.",
+    "details": "Most attacks start with user devices (workstations/end-points) -e.g., malware, phishing, ransomware, etc. Such attacks can be prevented by installing an endpoint protection solution which monitors system activities in real time and prevents/blocks exploits and malware.",
+    "suggestedTools": "Windows Defender, MalwareBytes, Sophos, CarbonBlack Defense, Endgame",
+    "corporate": "x",
+    "productInfrastructure": "x"
+  },
+  {
+    "safeguardsConsiderations": "Resiliency",
+    "controls": "Ensure you can recover your data and systems in case of disruptions; use a cloud-based backup solution and/or define a recovery procedure. Try it out at least once to make sure it works as intended.",
+    "details": "The ability to recover in the event of disruptions, either caused by accidental errors or attacks, requires a reasonable level of resilience; backups are a part of the resilience \"toolkit\". At a minimum, backup your data and your code on a regular basis. The ability to delete backups should involve a multi-step process, ideally involving multiple individuals. If backups are not warranted -e.g., immutable infrastructure or infrastructure-as-code in the environment, ensure you define recovery processes/steps and try to recover, at least once, using the steps you've defined.",
+    "suggestedTools": "If using a cloud backup solution, leverage existing capabilities - e.g., S3 in AWS, RDS snapshots, etc.",
+    "corporate": "x ",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Governance",
+    "controls": "Create and maintain an inventory of services, assets, and data.",
+    "details": "As the saying goes, you cannot protect what you don't know. Keep an up-to-date inventory of services with service owners identified, and an up-to-date asset inventory. This helps keep licensing and costs in check, and avoids waste.",
+    "suggestedTools": "Casper JAMF for Mac asset management; Better Cloud for SaaS service asset management, Atlassian Insight, Blissfully",
+    "corporate": "x ",
+    "productInfrastructure": "x",
+    "product": "x",
+    "undefined": "https://www.blissfully.com/\nhttps://marketplace.atlassian.com/apps/1212137/insight-asset-management?hosting=cloud&tab=overview\n"
+  },
+  {
+    "safeguardsConsiderations": "Governance",
+    "controls": "Find a security resource to provide advice regarding security matters.",
+    "details": "Security is a fairly specialized discipline and internal resources may not have the level of expertise required to provide advice on security matters. It is recommended to identify an external resource that can provide on-call security support/advisory services when needed.  ",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Resiliency",
+    "controls": "Build or use orchestration to deploy infrastructure in a predictable manner.",
+    "details": "Initial investment in building predictable deployment methods with the ability to roll back quickly in case of a change goes a long way in ensuring the security and stability of the platform as the company scales and onboards new customers. ",
+    "reference": "Recommended reading: Google's Site Reliability Engineering book.",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Resiliency",
+    "controls": "Consider building on a technology platform (i.e., OS) with a long support window.",
+    "details": "When decisions are being made regarding select components of the technology stack, factors like availability of support and patches are very important (i.e., pick the latest/LTS version).",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Resiliency",
+    "controls": "Enable audit trails and logging whenever technically feasible and reasonable from storage and cost perspectives.",
+    "details": "Audit trails are important for debugging both operational and security issues for after the fact investigation as to what really happened and answer the Who, When, and What questions. It is recommended that audit trails be enabled wherever technically feasible. Appropriate log retention strategy should be adopted as per in scope regulations in case the company deals with regulated data.",
+    "suggestedTools": "CloudTrail, AWS Config",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Resiliency",
+    "controls": "Consider cloud-services for IaaS and/or PaaS. Major cloud services have comprehensive security and resiliency services built in, from role-based access to logging and alerting.",
+    "details": "In early stages of a company's lifecycle, where engineering resources are constrained, it is advisable to leverage cloud platforms for IaaS and/or PaaS. Such platforms provide quick scalability as the company onboards new customers and also the built-in resiliency and security features, enabling the company to focus on the product versus focusing on procuring and maintaining expensive infrastructure.",
+    "suggestedTools": "GCP, AWS, Azure",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Resiliency",
+    "controls": "Create non-production environments that mimic production, e.g., development and/or staging. ",
+    "details": "As the company pushes new releases, feature related patches, hotfixes, security patches etc. it is imperative to maintain a non-production environment where both functionality related and security-related updates can be tested before pushed to production.",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Governance",
+    "controls": "Standardize on services employed (e.g., Dropbox, Salesforce, etc.)",
+    "details": "To help stay in control of information assets, ensure services are standardized and all procurement is done via a central resource.",
+    "suggestedTools": "Dropbox, Box, Salesforce",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Infrastructure Security",
+    "controls": "Use established email and file hosting services that provide malware management features.",
+    "details": "One of the most common attack vectors for malware spread is via email attachments or phishing links. It is advisable to use email services that provide malware scanning, spam protection and protection against suspicious links. Use of file hosting services with built in malware scanning is also advisable to avoid spreading malware within the organization or with external stakeholders when an infected file is shared.",
+    "corporate": "x"
+  },
+  {
+    "safeguardsConsiderations": "Application Security",
+    "controls": "Learn, and follow, basic application security guidelines.",
+    "details": "Open Web Application Security Project (OWASP), SANS, and others provide industry-standard guidance on the most common application security issues with specific cheat sheets. Provide developers with security guidelines to minimize application-related vulnerabilities and avoid common mistakes. While application security generally requires a specific skillset, most developers can learn a great deal by joining and participating in the application security community - e.g., attend local OWASP and other security meetups, join collaboration forums (e.g., security engineering Slack workspaces), etc. ",
+    "suggestedTools": "mod_security, Sqreen (Runtime AppSec tool), or application penetration tests will give indicators of health.",
+    "reference": "https://infosec.mozilla.org/guidelines/web_security",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Application Security",
+    "controls": "Encrypt data in transit and at rest.",
+    "details": "Traffic encryption using TLS or IPSec defeats many network related attacks with minimal overhead, especially mutual TLS. Utilize it for all internal and external communications. A good resource to verify external facing TLS level security configuration and settings are optimized is SSL Labs. Strive for an A/A+ rating on the SSL Labs test report. \n\nAny data repositories which have sensitive data should be encrypted by default. Better yet, consider using a cloud provider for storing sensitive data and do not store any sensitive consumer information - e.g., tokenization services. When storing sensitive data, consider encrypting the data repository; at a minimum, use the built-in encryption offered by many cloud providers; preferably, implement column or row-level encryption.",
+    "suggestedTools": "SSL Labs for network encryption",
+    "productInfrastructure": "x ",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Governance",
+    "controls": "Collect the minimum information necessary and store it for the minimal time needed. Minimize data stores with sensitive data. ",
+    "details": "Minimize the impact of a security incident by limiting the locations where sensitive data is stored. Delete sensitive data as soon as it is no longer needed for business purposes. ",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Application Security",
+    "controls": "Run applications as unprivileged users.",
+    "details": "Running applications as unprivileged users limits the potential damage of a successful attack against the application. If the application runs as an unprivileged user, the attack is not as likely to compromise the entire system, reducing the impact and the likelihood of a major incident. Compromise of applications running as privileged users, e.g., root, on the other hand, generally results in a total system compromise. ",
+    "product": "x",
+    "productInfrastructure": "x"
+  },
+  {
+    "safeguardsConsiderations": "Infrastructure Security",
+    "controls": "Run external vulnerability scans — those originating from the Internet — to test for exposures in the publicly-facing systems and environments.",
+    "details": "A vulnerability scanning solution is a relatively cheap way to discover security vulnerabilities. It is recommended to run these scans regularly as the application and infrastructure consistently change.",
+    "suggestedTools": "OpenVAS, Tenable, Rapid7, Qualys",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Application Security",
+    "controls": "Only use up-to-date and trusted third-party components for the software developed by the organization\n",
+    "details": "Third-party components can be malicious. E.g.. Bitcoin miners or those which contain security vulnerabilities that could be exploited, particularly if the code in question is running on a publicly accessible system, resulting in exposure for organization using them. Use of known/reputable third party components, which are regularly updated is recommended.\n\nCode repository tools like GitHub provide third party dependency vulnerability alerting for common languages. This should be enabled to ensure that code contributors to specific repos are aware of the security vulnerabilities in third party dependencies.",
+    "suggestedTools": "GitHub dependency checker, Maven, SonarQube, Contrast Security, Snyk, Fossa, Synopsis to verify and control third-party components",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Application Security",
+    "controls": "Adopt and deploy Secure Development Lifecycle",
+    "details": "It is important to establish a Software Development Lifecycle (SDLC) which incorporates security and privacy, early on. This could be as simple as having security and privacy reviews as a section in any of the tech specs or product requirement Documents. ",
+    "reference": "SDLC Framework Options:\nOpenSAMM: https://www.opensamm.org/\nBSIMM: https://www.bsimm.com/framework.html\nOWASP: https://www.owasp.org/index.php/OWASP_Secure_Software_Development_Lifecycle_Project\nMicrosoft: https://www.microsoft.com/en-us/securityengineering/sdl/practices\n\n or https://security4startups.com/SDLC",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Governance",
+    "controls": "Create a security email address (e.g., security@companyx.com) such that internal AND external users/individuals can contact/report security matters.",
+    "details": "Allowing individuals to report on discovered vulnerabilities could help minimize the exposure windows for attackers to take advantage and cause damage. This email box should not be a spam folder for all IT related events, but an active channel to handle security incidents.",
+    "corporate": "x",
+    "product": "x"
+  }
+]

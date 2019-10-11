@@ -1,0 +1,9 @@
+A privileged account is one that can affect the systems behavior for other accounts.
+
+Privileged accounts must use 2FA
+
+Only access services with privileged accounts from <company> managed devices
+
+Use privileged accounts only when required and not for day to day activity (email, browsing)
+
+Use must be audited

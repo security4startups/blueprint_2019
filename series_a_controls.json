@@ -1,0 +1,135 @@
+[
+  {
+    "safeguardsConsiderations": "Identity and Access Management",
+    "controls": "Establish system / environment owners and a process to control access to information, systems, and data.",
+    "details": "As the organization grows its technical footprint, it is important to assign owners to systems and environments who can be responsible for controlling access to the assets. Especially where access to confidential data / systems is involved, having an owner review the access request prior to approval will enforce good access practices and drive accountability of decisions (e.g. ownership assigned as tags in AWS assets).",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Identity and Access Management",
+    "controls": "Create a change of roles process within the company, especially for permissions management (remove unnecessary permissions).",
+    "details": "As new employees get onboarded and teams grow, there will be several employees who will shift roles and take on new responsibilities. With fast paced changes, it is important to set up a process so as to continue providing employee access to assets based on \"need-to-know\" principles, preventing overly permissive privileges. ",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Identity and Access Management",
+    "controls": "Perform periodic permissions and privileged access review.",
+    "details": "Review user permissions periodically (look for accounts that needed to be terminated as well as excess permissions). Depending on the criticality of data at hand and requirements from customers / compliance regulations, this review should be performed quarterly.",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Infrastructure Security",
+    "controls": "Leverage your cloud provider's built-in configuration security scanner.",
+    "details": "Cloud providers offer built-in services that can identify insecure configurations such as exposed resources. For example, AWS Trusted Advisor is a solution for automatically checking cloud infrastructure configurations against established benchmarks such as Center for Internet Security (CIS). Set up alerting and regularly review reports for insecure configurations. Address findings on a timely basis based on severity.",
+    "suggestedTools": "AWS Trusted Advisor",
+    "reference": "https://aws.amazon.com/premiumsupport/technology/trusted-advisor/ \nhttps://azure.microsoft.com/en-us/services/security-center/ \nhttps://cloud.google.com/security-command-center/",
+    "productInfrastructure": "x"
+  },
+  {
+    "safeguardsConsiderations": "Infrastructure Security",
+    "controls": "Adopt best practices from cloud provider reference architectures.",
+    "details": "Cloud providers offering PaaS services have built reference architectures that can be leveraged as security best practices for architecting cloud environments. Following such standards will help ensure fundamentally strong designs from a security, quality, and reliability perspective.",
+    "reference": "https://aws.amazon.com/whitepapers/aws-security-best-practices/\nhttps://docs.microsoft.com/en-us/azure/security/security-best-practices-and-patterns\nhttps://cloud.google.com/docs/enterprise/best-practices-for-enterprise-organizations",
+    "productInfrastructure": "x"
+  },
+  {
+    "safeguardsConsiderations": "Governance",
+    "controls": "Have a third-party perform an authorized penetration test (pentest).",
+    "details": "Firms employing ethical hackers can be contracted to perform a pentest of the environment, simulating an attack and identifying ways in which a breach might happen in your environment. Potential customers are likely to ask for a full or redacted version of the resulting pentest report, so ask for internal and customer-facing versions of the report.",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Governance",
+    "controls": "Track vulnerabilities and security issues in a ticketing system.",
+    "details": "Track security bugs like any other bug using existing bug tracking system, assign priority based on risk levels, and assign ownership for remediation. For incidents or critical issues, Root Cause Analysis (RCA) process should be conducted to incorporate learning behavior on security issues.",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Application Security",
+    "controls": "Perform security assessments as part of product development.",
+    "details": "New and existing features should be tested for security vulnerabilities, both at the application level and the infrastructure supporting the feature. Depending on the severity of the vulnerability, require remediation prior to release.",
+    "reference": "http://security4startup.com/app-security",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Resiliency",
+    "controls": "Define availability requirements (e.g., Maximum Tolerable Downtime, Recovery Point Objective), and identify and implement necessary solutions to meet these needs. Consider creating and testing a disaster recovery plan.",
+    "details": "Assess disaster risk and recovery options in order to establish a disaster recovery plan. Where possible, test your plan to ensure that the business can resume operation following a disaster event. Focus on critical assets, avoid single point of failure.",
+    "corporate": "x",
+    "productInfrastructure": "x"
+  },
+  {
+    "safeguardsConsiderations": "Resiliency",
+    "controls": "Consider adding protection against distributed denial of service (DDoS) attacks. ",
+    "details": "Distributed denial of service attempts can disrupt or slow down operations, leaving assets paralized. ",
+    "suggestedTools": "If your service is supporting a critical operation, consider subscribing to premium offering of companies such as Fastly, Akamai, or Cloudflare. AWS and Azure have basic protection mechanism enabled by default, for GCP this can be turned on for a minimal cost.",
+    "productInfrastructure": "x"
+  },
+  {
+    "safeguardsConsiderations": "Governance",
+    "controls": "Follow a process for securely disposing documents and equipment.",
+    "details": "Printed documents, removable media, and computing devices may contain information that is sensitive to customers or the business. As such, these should be carefully discarded in adherence to a process that is established to minimize the risk of data theft. Leverage publicly available processes and secure disposal services where possible. ",
+    "corporate": "x"
+  },
+  {
+    "safeguardsConsiderations": "Governance",
+    "controls": "Be ready to return and destroy customer data.",
+    "details": "Before accepting customer data, be prepared to return a copy and then destroy data provided or related to a specific customer on termination of business relationship or request. You should also be prepared to certify to the customer that this process was completed. ",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Governance",
+    "controls": "Define and implement a data retention plan; ideally, the plan should automatically dispose of data when no longer necessary.",
+    "details": "By getting rid of sensitive data that you no longer need to store, you reduce the potential impact and liability of a data breach.",
+    "product": "x",
+    "productInfrastructure": "x"
+  },
+  {
+    "safeguardsConsiderations": "Governance",
+    "controls": "Establish a Vendor Security Assessment process where you implement security best practices of third-party providers used while assessing the risk these services could impose to your company. ",
+    "details": "Track vendors and ensure that critical vendors meet or exceed your safeguards, for example self-assess using these guidelines.\r\nAssess third party providers from content delivery networks to SaaS middleware to archival and data analysis tools, ensure your controls encompass your entire attack surface:\r\nIdentify key suppliers and supply chain services.\r\nEnsure 'key' includes not only up time requirements but also customer data risk.\r\nEnsure supplier best-practices are used to deliver your functionality.\r\nEnsure supplier notifies you of new vulnerabilities and depredation of security practices or service levels.\r\nEnsure you have assigned a responsible team member to act upon these imperatives.",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Governance",
+    "controls": "Put in place confidentiality and security obligations and enforce terms and conditions with employees and contractors. ",
+    "details": "In absence of extensive policy documents, at the minimum the employees and contractors should acknowledge that they are aware of and agree to the confidentiality and security obligations around handling data, systems, equipment, and information. This officially signed / acknowledged statement (with an 'I agree' checkbox) is extremely important in cases of litigations.",
+    "corporate": "x",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Governance",
+    "controls": "Perform basic security, privacy and compliance awareness and training with employees, including general security practices at the minimum.",
+    "details": "All employees must be made aware of basic security and privacy obligations, including but not limited to things like locking screens, encrypting equipment, passcode on cell phones, keeping OS updated on devices, installing anti-virus, physical security of laptops, mobile phones, using strong passwords. These basic hygiene measures are easy to complete but also very easy to forget and may end up resulting in irreparable damage from loss of data / trust.",
+    "suggestedTools": "Infosec Institute, http://www.ataata.com",
+    "corporate": "x"
+  },
+  {
+    "safeguardsConsiderations": "Infrastructure Security",
+    "controls": "Ensure that any physical servers you manage that handle sensitive data are protected in line with physical security best practices. ",
+    "details": "If you are using cloud services for storing / processing confidential information (including your own IP), this area should be covered for the most part by your provider. Platforms like AWS, GCP, Azure, etc. have very well managed physical security programs that they entirely own and operate. However, if you process or store intellectual property or any other sensitive information at locations other than well-known cloud service providers, make sure appropriate physical security measures are in place to protect it from physical threats. ",
+    "reference": "https://www.isms.online/iso-27001/annex-a-11-physical-and-environmental-security/",
+    "productInfrastructure": "x",
+    "product": "x"
+  },
+  {
+    "safeguardsConsiderations": "Infrastructure Security",
+    "controls": "Office areas should be secured with basic physical security measures so as to have basic deterrence against smash and grab type attempts.",
+    "details": "Enforce physical badges for accessing office facilities, ensure the landlords or the facility owners have video surveillance on the entry and exits of the office spaces.",
+    "corporate": "x"
+  }
+]
