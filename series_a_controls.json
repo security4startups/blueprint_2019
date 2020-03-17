@@ -57,7 +57,7 @@
     "safeguardsConsiderations": "Application Security",
     "controls": "Perform security assessments as part of product development.",
     "details": "New and existing features should be tested for security vulnerabilities, both at the application level and the infrastructure supporting the feature. Depending on the severity of the vulnerability, require remediation prior to release.",
-    "reference": "http://security4startup.com/app-security",
+    "reference": "http://security4startups.com/app-security",
     "productInfrastructure": "x",
     "product": "x"
   },
